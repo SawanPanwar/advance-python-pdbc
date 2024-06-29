@@ -67,10 +67,13 @@ class UserModel:
         sql = "select * from user"
         cursor.execute(sql)
         result = cursor.fetchall()
-        for data in result:
-            print(data[0], '\t', data[1], '\t', data[2], '\t', data[3], '\t', data[4], '\t', data[5], '\t', data[6])
-        connection.commit()
+        columnName = ("id", "firstName", "lastName", "loginId", "password", "dob", "address")
+        res = []
+        for x in result:
+            print({columnName[i]: x[i] for i, _ in enumerate(x)})
+            res.append({columnName[i]: x[i] for i, _ in enumerate(x)})
         connection.close()
+        return res
 
     def get(self, id):
         connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='adv_python')
@@ -79,10 +82,13 @@ class UserModel:
         data = (id)
         cursor.execute(sql, data)
         result = cursor.fetchall()
-        for data in result:
-            print(data[0], '\t', data[1], '\t', data[2], '\t', data[3], '\t', data[4], '\t', data[5], '\t', data[6])
-        connection.commit()
+        columnName = ("id", "firstName", "lastName", "loginId", "password", "dob", "address")
+        res = []
+        for x in result:
+            print({columnName[i]: x[i] for i, _ in enumerate(x)})
+            res.append({columnName[i]: x[i] for i, _ in enumerate(x)})
         connection.close()
+        return res
 
     def findbylogin(self, loginId):
         connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='adv_python')
@@ -91,10 +97,13 @@ class UserModel:
         data = (loginId)
         cursor.execute(sql, data)
         result = cursor.fetchall()
-        for data in result:
-            print(data[0], '\t', data[1], '\t', data[2], '\t', data[3], '\t', data[4], '\t', data[5], '\t', data[6])
-        connection.commit()
+        columnName = ("id", "firstName", "lastName", "loginId", "password", "dob", "address")
+        res = []
+        for x in result:
+            print({columnName[i]: x[i] for i, _ in enumerate(x)})
+            res.append({columnName[i]: x[i] for i, _ in enumerate(x)})
         connection.close()
+        return res
 
     def search(self, data):
         firstName = data.get('firstName', '')
@@ -114,7 +123,13 @@ class UserModel:
         print('sql => ', sql)
         cursor.execute(sql)
         result = cursor.fetchall()
-        for data in result:
-            print(data[0], '\t', data[1], '\t', data[2], '\t', data[3], '\t', data[4], '\t', data[5], '\t', data[6])
-        connection.commit()
+        columnName = ("id", "firstName", "lastName", "loginId", "password", "dob", "address")
+        res = []
+        for x in result:
+            print({columnName[i]: x[i] for i, _ in enumerate(x)})
+            res.append({columnName[i]: x[i] for i, _ in enumerate(x)})
         connection.close()
+        return res
+
+
+

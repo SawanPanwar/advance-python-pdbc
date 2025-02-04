@@ -4,7 +4,7 @@ import pymysql
 def testInsert1():
     connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='adv_python')
     cursor = connection.cursor()
-    sql = "insert into marksheet values(4, 104, 'pqr', 13, 48, 38)"
+    sql = "insert into marksheet values(1, 101, 'abc', 34, 48, 38)"
     cursor.execute(sql)
     connection.commit()
     connection.close()
@@ -15,7 +15,7 @@ def testInsert2():
     connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='adv_python')
     cursor = connection.cursor()
     sql = "insert into marksheet values(%s, %s, %s, %s, %s, %s)"
-    data = (5, 105, 'pqr', 78, 67, 56)
+    data = (2, 102, 'xyz', 78, 67, 56)
     cursor.execute(sql, data)
     connection.commit()
     connection.close()
@@ -52,13 +52,14 @@ def testInsert4(data):
 
 # testInsert1()
 # testInsert2()
-# testInsert3(6, 106, 'pqr', 89, 77, 67)
+# testInsert3(3, 103, 'pqr', 89, 77, 67)
 
 params = {}
-params['id'] = 7
-params['rollNo'] = 107
+params['id'] = 4
+params['rollNo'] = 104
 params['name'] = 'klj'
-params['physics'] = 70
-params['chemistry'] = 67
-params['maths'] = 79
+params['physics'] = 100
+params['chemistry'] = 100
+params['maths'] = 100
+
 testInsert4(params)

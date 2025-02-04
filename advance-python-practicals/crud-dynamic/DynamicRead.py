@@ -2,7 +2,7 @@ import pymysql
 
 
 def testRead1():
-    connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='adv_python')
+    connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='advance_python')
     cursor = connection.cursor()
     sql = "select * from marksheet"
     cursor.execute(sql)
@@ -14,7 +14,7 @@ def testRead1():
 
 
 def testRead2():
-    connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='adv_python')
+    connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='advance_python')
     cursor = connection.cursor()
     sql = "select * from marksheet"
     cursor.execute(sql)
@@ -27,7 +27,7 @@ def testRead2():
 
 
 def testRead3():
-    connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='adv_python')
+    connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='advance_python')
     cursor = connection.cursor()
     sql = "select * from marksheet where name like 'a%'"
     print('sql => ', sql)
@@ -40,7 +40,7 @@ def testRead3():
 
 
 def testRead4(name):
-    connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='adv_python')
+    connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='advance_python')
     cursor = connection.cursor()
     sql = "select * from marksheet where name like '" + name + "%'"
     print('sql => ', sql)
@@ -55,9 +55,47 @@ def testRead4(name):
 def testRead5(param={}):
     name = param.get('name', '')
     rollNo = param.get('rollNo', 0)
-    connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='adv_python')
+    connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='advance_python')
     cursor = connection.cursor()
     sql = "select * from marksheet where name like '" + name + "%'"
+    print('sql => ', sql)
+    cursor.execute(sql)
+    result = cursor.fetchall()
+    for data in result:
+        print(data[0], '\t', data[1], '\t', data[2], '\t', data[3], '\t', data[4], '\t', data[5])
+    connection.commit()
+    connection.close()
+
+
+def testRead6(param={}):
+    name = param.get('name', '')
+    rollNo = param.get('rollNo', 0)
+    connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='advance_python')
+    cursor = connection.cursor()
+    sql = "select * from marksheet"
+    if name != '':
+        sql += " where name = '" + name + "%'"
+    if rollNo != 0:
+        sql += " where roll_no = " + str(rollNo)
+    print('sql => ', sql)
+    cursor.execute(sql)
+    result = cursor.fetchall()
+    for data in result:
+        print(data[0], '\t', data[1], '\t', data[2], '\t', data[3], '\t', data[4], '\t', data[5])
+    connection.commit()
+    connection.close()
+
+
+def testRead7(param={}):
+    name = param.get('name', '')
+    rollNo = param.get('rollNo', 0)
+    connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='advance_python')
+    cursor = connection.cursor()
+    sql = "select * from marksheet where 1=1"
+    if name != '':
+        sql += " and name = '" + name + "%'"
+    if rollNo != 0:
+        sql += " and roll_no = " + str(rollNo)
     print('sql => ', sql)
     cursor.execute(sql)
     result = cursor.fetchall()
@@ -73,5 +111,11 @@ def testRead5(param={}):
 # testRead4("x")
 
 param = {}
-# param['name'] = ''
-testRead5(param)
+param['name'] = 'a'
+param['rollNo'] = 101
+
+# testRead5(param)
+
+# testRead6(param)
+
+testRead7(param)

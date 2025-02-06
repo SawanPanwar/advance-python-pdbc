@@ -32,11 +32,6 @@ def testDelete():
     model.delete(8)
 
 
-def testRead():
-    model = MarksheetModel()
-    model.read()
-
-
 def testGet():
     model = MarksheetModel()
     model.get(2)

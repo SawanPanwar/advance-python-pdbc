@@ -59,20 +59,6 @@ class MarksheetModel:
         connection.close()
         print('data deleted successfully')
 
-    def read(self):
-        connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='adv_python')
-        cursor = connection.cursor()
-        sql = "select * from marksheet"
-        cursor.execute(sql)
-        result = cursor.fetchall()
-        columnName = ("id", "rollNo", "name", "physics", "chemistry", "maths")
-        res = []
-        for x in result:
-            print({columnName[i]: x[i] for i, _ in enumerate(x)})
-            res.append({columnName[i]: x[i] for i, _ in enumerate(x)})
-        connection.close()
-        return res
-
     def get(self, id):
         connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='adv_python')
         cursor = connection.cursor()
@@ -83,7 +69,7 @@ class MarksheetModel:
         columnName = ("id", "rollNo", "name", "physics", "chemistry", "maths")
         res = []
         for x in result:
-            print({columnName[i]: x[i] for i, _ in enumerate(x)})
+            # print({columnName[i]: x[i] for i, _ in enumerate(x)})
             res.append({columnName[i]: x[i] for i, _ in enumerate(x)})
         connection.close()
         return res
@@ -98,7 +84,7 @@ class MarksheetModel:
         columnName = ("id", "rollNo", "name", "physics", "chemistry", "maths")
         res = []
         for x in result:
-            print({columnName[i]: x[i] for i, _ in enumerate(x)})
+            # print({columnName[i]: x[i] for i, _ in enumerate(x)})
             res.append({columnName[i]: x[i] for i, _ in enumerate(x)})
         connection.close()
         return res

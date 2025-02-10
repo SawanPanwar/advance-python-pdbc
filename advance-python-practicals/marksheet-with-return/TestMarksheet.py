@@ -39,12 +39,20 @@ def testRead():
 
 def testGet():
     model = MarksheetModel()
-    print(model.get(1))
+    list = model.get(1)
+    for data in list:
+        print(data['id'], '\t', data['rollNo'], '\t', data['name'], '\t', data['physics'], '\t', data['chemistry'],
+              '\t',
+              data['maths'], )
 
 
 def testFindByRollNo():
     model = MarksheetModel()
-    model.findByRoll(103)
+    list = model.findByRoll(103)
+    for data in list:
+        print(data['id'], '\t', data['rollNo'], '\t', data['name'], '\t', data['physics'], '\t', data['chemistry'],
+              '\t',
+              data['maths'], )
 
 
 def testSearch():
@@ -64,6 +72,6 @@ def testSearch():
 # testAdd()
 # testUpdate()
 # testRead()
-# testGet()
+testGet()
 # testFindByRollNo()
-testSearch()
+# testSearch()

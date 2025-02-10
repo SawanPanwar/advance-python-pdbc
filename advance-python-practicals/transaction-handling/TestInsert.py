@@ -10,6 +10,7 @@ try:
     cursor.execute(sql1)
     cursor.execute(sql2)
     cursor.execute(sql3)
+    connection.commit()
     connection.close()
     print('data inserted successfully')
 except Exception as e:

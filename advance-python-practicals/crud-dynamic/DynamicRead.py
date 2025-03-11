@@ -30,9 +30,10 @@ def testRead3():
     connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='advance_python')
     cursor = connection.cursor()
 
-    # sql = "select * from marksheet where id = 1"
+    # sql = "select * from marksheet"
+    sql = "select * from marksheet where id = 1"
     # sql = "select * from marksheet where roll_no = 101"
-    sql = "select * from marksheet where name like 'a%'"
+    # sql = "select * from marksheet where name like 'a%'"
     # sql = "select * from marksheet where physics = 12"
     # sql = "select * from marksheet where chemistry = 34"
     # sql = "select * from marksheet where maths = 55"
@@ -49,19 +50,20 @@ def testRead3():
 def testRead4(id, rollNo, name, physics, chemistry, maths):
     connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='advance_python')
     cursor = connection.cursor()
+
     sql = 'select * from marksheet'
     if id != 0:
-        sql += " and id = " + str(id)
+        sql += " where id = " + str(id)
     if rollNo != 0:
-        sql += " and roll_no = " + str(rollNo)
+        sql += " where roll_no = " + str(rollNo)
     if name != '':
-        sql += " and name like '" + name + "%'"
+        sql += " where name like '" + name + "%'"
     if physics != 0:
-        sql += " and physics = " + str(physics)
+        sql += " where physics = " + str(physics)
     if chemistry != 0:
-        sql += " and chemistry = " + str(chemistry)
+        sql += " where chemistry = " + str(chemistry)
     if maths != 0:
-        sql += " and maths = " + str(maths)
+        sql += " where maths = " + str(maths)
     print('sql => ', sql)
     cursor.execute(sql)
     result = cursor.fetchall()
@@ -72,38 +74,6 @@ def testRead4(id, rollNo, name, physics, chemistry, maths):
 
 
 def testRead5(param={}):
-    id = param.get('id', 0)
-    rollNo = param.get('rollNo', 0)
-    name = param.get('name', '')
-    physics = param.get('physics', 0)
-    chemistry = param.get('chemistry', 0)
-    maths = param.get('maths', 0)
-
-    connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='advance_python')
-    cursor = connection.cursor()
-    sql = 'select * from marksheet'
-    if id != 0:
-        sql += " and id = " + str(id)
-    if rollNo != 0:
-        sql += " and roll_no = " + str(rollNo)
-    if name != '':
-        sql += " and name like '" + name + "%'"
-    if physics != 0:
-        sql += " and physics = " + str(physics)
-    if chemistry != 0:
-        sql += " and chemistry = " + str(chemistry)
-    if maths != 0:
-        sql += " and maths = " + str(maths)
-    print('sql => ', sql)
-    cursor.execute(sql)
-    result = cursor.fetchall()
-    for data in result:
-        print(data[0], '\t', data[1], '\t', data[2], '\t', data[3], '\t', data[4], '\t', data[5])
-    connection.commit()
-    connection.close()
-
-
-def testRead6(param={}):
     id = param.get('id', 0)
     rollNo = param.get('rollNo', 0)
     name = param.get('name', '')
@@ -136,7 +106,7 @@ def testRead6(param={}):
     connection.close()
 
 
-def testRead7(param={}):
+def testRead6(param={}):
     id = param.get('id', 0)
     rollNo = param.get('rollNo', 0)
     name = param.get('name', '')
@@ -181,13 +151,11 @@ def testRead7(param={}):
 # testRead4(1, 101, '', 0, 0, 0)
 
 param = {}
-# param['name'] = 'a'
-# param['rollNo'] = 101
-param['pageNo'] = 4
-param['pageSize'] = 0
+param['name'] = 'a'
+param['rollNo'] = 101
+# param['pageNo'] = 4
+# param['pageSize'] = 0
 
-# testRead5(param)
+testRead5(param)
 
 # testRead6(param)
-
-testRead7(param)

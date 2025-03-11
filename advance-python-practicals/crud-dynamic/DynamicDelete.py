@@ -2,7 +2,7 @@ import pymysql
 
 
 def testDelete1():
-    connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='adv_python')
+    connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='advance_python')
     cursor = connection.cursor()
     sql = "delete from marksheet where id = 4"
     cursor.execute(sql)
@@ -12,7 +12,7 @@ def testDelete1():
 
 
 def testDelete2():
-    connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='adv_python')
+    connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='advance_python')
     cursor = connection.cursor()
     sql = "delete from marksheet where id = %s"
     data = (2)
@@ -23,7 +23,7 @@ def testDelete2():
 
 
 def testDelete3(id):
-    connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='adv_python')
+    connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='advance_python')
     cursor = connection.cursor()
     sql = "delete from marksheet where id = %s"
     data = (id)

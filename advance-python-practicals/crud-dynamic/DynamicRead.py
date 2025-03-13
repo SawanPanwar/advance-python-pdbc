@@ -153,9 +153,9 @@ def testRead6(param={}):
 param = {}
 param['name'] = 'a'
 param['rollNo'] = 101
-# param['pageNo'] = 4
-# param['pageSize'] = 0
+param['pageNo'] = 1
+param['pageSize'] = 5
 
-testRead5(param)
+# testRead5(param)
 
-# testRead6(param)
+testRead6(param)

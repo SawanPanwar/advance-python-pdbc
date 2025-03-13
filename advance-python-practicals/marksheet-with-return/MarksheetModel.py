@@ -5,7 +5,7 @@ class MarksheetModel:
 
     def nextPk(self):
         pk = 0
-        connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='adv_python')
+        connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='advance_python')
         cursor = connection.cursor()
         sql = "select max(id) from marksheet"
         cursor.execute(sql)
@@ -24,7 +24,7 @@ class MarksheetModel:
         physics = data['physics']
         chemistry = data['chemistry']
         maths = data['maths']
-        connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='adv_python')
+        connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='advance_python')
         cursor = connection.cursor()
         sql = "insert into marksheet values(%s, %s, %s, %s, %s, %s)"
         data = (id, rollNo, name, physics, chemistry, maths)
@@ -40,7 +40,7 @@ class MarksheetModel:
         physics = data['physics']
         chemistry = data['chemistry']
         maths = data['maths']
-        connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='adv_python')
+        connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='advance_python')
         cursor = connection.cursor()
         sql = "update marksheet set roll_no = %s, name = %s, physics = %s, chemistry = %s, maths = %s where id = %s"
         data = (rollNo, name, physics, chemistry, maths, id)
@@ -50,7 +50,7 @@ class MarksheetModel:
         print('data updated successfully')
 
     def delete(self, id):
-        connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='adv_python')
+        connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='advance_python')
         cursor = connection.cursor()
         sql = "delete from marksheet where id = %s"
         data = (id)
@@ -60,7 +60,7 @@ class MarksheetModel:
         print('data deleted successfully')
 
     def get(self, id):
-        connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='adv_python')
+        connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='advance_python')
         cursor = connection.cursor()
         sql = "select * from marksheet where id = %s"
         data = (id)
@@ -75,7 +75,7 @@ class MarksheetModel:
         return res
 
     def findByRoll(self, rollNo):
-        connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='adv_python')
+        connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='advance_python')
         cursor = connection.cursor()
         sql = "select * from marksheet where roll_no = %s"
         data = (rollNo)
@@ -94,7 +94,7 @@ class MarksheetModel:
         rollNo = data.get('rollNo', 0)
         pageNo = data.get('pageNo', 0)
         pageSize = data.get('pageSize', 0)
-        connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='adv_python')
+        connection = pymysql.connect(host='localhost', port=3306, user='root', password='root', db='advance_python')
         cursor = connection.cursor()
         sql = "select * from marksheet where 1=1"
         if name != '':

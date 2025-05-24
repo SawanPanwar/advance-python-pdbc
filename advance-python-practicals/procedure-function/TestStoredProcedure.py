@@ -33,5 +33,5 @@ def empInOut():
 
 
 empIn()
-# empOut()
-# empInOut()
+empOut()
+empInOut()

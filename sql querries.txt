@@ -1,0 +1,29 @@
+mysql> show databases;
+
+mysql> create database python_new;
+
+mysql> show databases;
+
+mysql> use python_new;
+
+mysql> create table emp(id int, name varchar(20), salary int);
+
+mysql> show tables;
+
+mysql> insert into emp values(1, 'abc', 1000);
+
+mysql> select * from emp;
+
+mysql> insert into emp values(2, 'xyz', 2000);
+
+mysql> select * from emp;
+
+mysql> update emp set salary = 500 where id = 1;
+
+mysql> select * from emp;
+
+mysql> delete from emp where id = 2;
+
+mysql> select * from emp;
+
+mysql>
